@@ -1,0 +1,38 @@
+* {
+    margin : 0;
+    padding : 0;
+}
+.main {
+    width :100%;
+    height : 100vh;
+    background-color : #000;
+}
+@-webkit-keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 30%;
+    }
+}
+@-webkit-keyframes blink-caret {
+    from, to {
+        border-color:
+    }
+    50% {
+        border-color: #fff;
+    }
+
+}
+body {
+    font-family: Consolas, monospace;
+}
+h1 {
+    font-size: 550%;
+    width: 30%;
+    color : #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    -webkit-animation: typing 1.5s steps(6, end), blink-caret 0.1s step-end infinite;
+}

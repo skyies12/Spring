@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="hello" class="com.study.spring.Hello">
+		<property name="name" value="나루토1"/>
+		<property name="nickname">
+			<value>이치고1</value>
+		</property>
+		<property name="printer" ref="printerA"></property>
+	</bean>
+</beans>

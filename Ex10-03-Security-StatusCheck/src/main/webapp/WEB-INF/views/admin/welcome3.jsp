@@ -1,0 +1,23 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
+<head>
+	<title>Welcome</title>
+</head>
+<body>
+<h1>
+	welcome : Admin  
+</h1>
+<c:if test="${not empty pageContext.request.userPrincipal }">
+	<p>is LogIn</p>
+</c:if>
+
+<c:if test="${empty pageContext.request.userPrincipal }">
+	<p>is LogOut</p>
+</c:if>
+
+USER ID = ${pageContext.request.userPrincipal.name }<br/>
+<c:url value="/j_spring_security_logout" var="logoutUrl"/>
+<a href="${logoutUrl }">LogOut</a>
+</body>
+</html>
