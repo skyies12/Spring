@@ -16,7 +16,7 @@ import com.study.spring20.dao.BDao;
 public class FileModifyCommand implements BCommand {
 	@Override
 	public void execute(HttpServletRequest request, Model model)  {
-String uploadPath = request.getRealPath("/uploadFile");
+		String uploadPath = request.getRealPath("/resources/fileFolder");
 		
 		int maxSize = 1024 * 1024 * 10; // 한번에 올릴 수 있는 파일 용량 : 10M로 제한
 		
@@ -60,7 +60,7 @@ String uploadPath = request.getRealPath("/uploadFile");
 				// 그 파일 객체의 크기를 알아냄
 				fileSize = file.length();
 			}
-			BDao dao = BDao.getInstance();
+			BDao dao = new BDao();
 			dao.modify(bNum, bId, name, subject, bContent, fileName1);
 		}catch(Exception e){
 			e.printStackTrace();

@@ -18,7 +18,7 @@ public class BModifyCommand implements BCommand {
 		String bContent = request.getParameter("bContent");
 		String bFile = request.getParameter("bTitle");
 		
-		BDao dao = BDao.getInstance();
+		BDao dao = new BDao();
 		dao.modify(bNum, bId, bName, bTitle, bContent, bFile);
 		
 	}

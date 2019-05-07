@@ -21,7 +21,7 @@ public class BListCommand implements BCommand {
 			nPage = Integer.parseInt(sPage);
 		} catch(Exception e) {}
 		
-		BDao dao = BDao.getInstance();	
+		BDao dao = new BDao();
 
 		String bNum = request.getParameter("bNum");
 		String naver = request.getParameter("naver");
@@ -29,7 +29,7 @@ public class BListCommand implements BCommand {
 		String kakao = request.getParameter("kakao");
 		String google = request.getParameter("google");
 		String db = request.getParameter("db");
-		System.out.println("넘버 : " + bNum);
+
 		BPageInfo pinfo = dao.articlePage(nPage, bNum);
 		request.setAttribute("page", pinfo);
 		

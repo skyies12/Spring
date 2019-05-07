@@ -13,7 +13,7 @@ public class BWriteCommand implements BCommand {
 		String bFile = request.getParameter("bTitle");
 		String bTitle = request.getParameter("bTitle");
 		String bContent = request.getParameter("bContent");
-		BDao dao = BDao.getInstance();
+		BDao dao = new BDao();
 		dao.write(bNum, bName, bFile, bTitle, bContent, id);
 	}
 }

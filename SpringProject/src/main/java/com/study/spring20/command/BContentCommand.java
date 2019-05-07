@@ -18,9 +18,9 @@ public class BContentCommand implements BCommand {
 		String checkname = request.getParameter("name");
 		String bNum = request.getParameter("bNum");
 		String check = request.getParameter("check");
-		BDao dao = BDao.getInstance();
+		BDao dao = new BDao();
 		BDto dto = dao.contentView(bId, bkind, bNum);
-		
+		System.out.println("bNum : " + bNum);
 		HttpSession session = null;
 		session = request.getSession();
 		session.setAttribute("checkname", checkname);

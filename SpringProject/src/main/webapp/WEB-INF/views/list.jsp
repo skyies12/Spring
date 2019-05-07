@@ -231,15 +231,15 @@ MemberDTO dto = dao.getMember(id);
 			<td class="btttd">
 				<c:forEach begin="1" end="${dto.bIndent }">→</c:forEach>
 					<% if(num.equals("0")) {%>
-					<a class="bTitle" id="title" href="filecontent_view?name=<%= nname %>&fileName1=${dto.bContent }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
+					<a class="bTitle" id="title" href="filecontent_view?name=<%= nname %>&fileName1=${dto.bFile }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
 				<%  } else if(num.equals("1")) {%>
-					<a class="bTitle" id="title" href="filecontent_view?name=<%= fname %>&fileName1=${dto.bContent }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
+					<a class="bTitle" id="title" href="filecontent_view?name=<%= fname %>&fileName1=${dto.bFile }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
 				<% } else if(num.equals("2")) {%>
-					<a class="bTitle" id="title" href="filecontent_view?name=<%= kname %>&fileName1=${dto.bContent }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
+					<a class="bTitle" id="title" href="filecontent_view?name=<%= kname %>&fileName1=${dto.bFile }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
 				<% } else if(num.equals("3")) {%>
-					<a class="bTitle" id="title" href="filecontent_view?name=<%= gname %>&fileName1=${dto.bContent }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
+					<a class="bTitle" id="title" href="filecontent_view?name=<%= gname %>&fileName1=${dto.bFile }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
 				<%} else if(num.equals("4")) {%>
-					<a class="bTitle" id="title" href="filecontent_view?name=<%= name %>&fileName1=${dto.bContent }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
+					<a class="bTitle" id="title" href="filecontent_view?name=<%= name %>&fileName1=${dto.bFile }&bNum=<%=bNum %>&bId=${dto.bId }&kind=view">${dto.bTitle }<c:if test="${today <= write_dt }"> &nbsp;<span class="badge badge-danger">New</span></c:if></a>
 				<%}%>
 			</td>
 			<td>${dto.bDate}</td>

@@ -62,7 +62,7 @@ public class FileUploadCommand implements BCommand {
 				
 			}
 			System.out.println("파일이름 : " + fileName1);
-			BDao dao = BDao.getInstance();
+			BDao dao = new BDao();
 			dao.write(bNum, name, subject, fileName1, bContent, id);
 		}catch(Exception e){
 			e.printStackTrace();
