@@ -28,7 +28,7 @@ public class BSelectCommand implements BCommand {
 		
 		HttpSession session = null;
 		session = request.getSession();
-		BDao dao = BDao.getInstance();
+		BDao dao = new BDao();
 		String bNum = (String)session.getAttribute("bNum");
 		session.setAttribute("cpage", nPage);
 		session.setAttribute("selectNum", selectNum);

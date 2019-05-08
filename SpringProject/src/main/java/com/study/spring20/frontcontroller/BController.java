@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,12 +36,25 @@ import com.study.spring20.command.BWriteCommand;
 import com.study.spring20.command.FileModifyCommand;
 import com.study.spring20.command.FileUploadCommand;
 import com.study.spring20.command.MemberListCommand;
+import com.study.spring20.util.Constant;
 
 @Controller
 public class BController {
+	
+	@Autowired
+	private ApplicationContext context;
+	
 	String viewPage = null;
 	BCommand command = null;
 	Service service = null;
+	
+	public JdbcTemplate template;
+	
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+		Constant.template = this.template;
+	}
 
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request,HttpServletResponse response, Model model) {
@@ -182,8 +198,11 @@ public class BController {
 		command = new BContentCommand();
 		command.execute(request, model);
 		String bNum = request.getParameter("bNum");
+		String name = request.getParameter("name");
+		String bId = request.getParameter("bId");
+		String bkind = request.getParameter("kind");
 		
-		return "redirect:list?bNum=" + bNum;
+		return "redirect:content_view?name=" + name + "&bNum=" + bNum + "&bId=" + bId + "&kind=" + bkind;
 	}	
 	
 	@RequestMapping("/delete")
@@ -255,8 +274,6 @@ public class BController {
 		command = new FileModifyCommand();
 		command.execute(request, model);
 		
-		command = new BContentCommand();
-		command.execute(request, model);
 		String bNum = request.getParameter("bNum");
 		
 		return "redirect:list?bNum=" + bNum;

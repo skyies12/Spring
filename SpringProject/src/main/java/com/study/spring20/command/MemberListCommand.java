@@ -22,7 +22,7 @@ public class MemberListCommand implements BCommand {
 			nPage = Integer.parseInt(sPage);
 		} catch(Exception e) {}
 		
-		BDao dao = BDao.getInstance();	
+		BDao dao = new BDao();
 
 		String bNum = request.getParameter("bNum");
 		String naver = request.getParameter("naver");

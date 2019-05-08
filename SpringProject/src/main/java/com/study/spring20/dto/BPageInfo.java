@@ -10,8 +10,6 @@ public class BPageInfo {
 	private int endPage;
 	private int bNum;
 	
-	
-	
 	public int getbNum() {
 		return bNum;
 	}

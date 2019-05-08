@@ -164,6 +164,18 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- JDBC Template -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.9.1</version>
+		</dependency>    
 	</dependencies>
 	<build>
 		<plugins>

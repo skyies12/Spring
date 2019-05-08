@@ -10,7 +10,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import com.study.spring20.dto.BDto;
+import com.study.spring20.util.Constant;
 
 public class MemberDAO {
 
@@ -18,6 +21,8 @@ public class MemberDAO {
 //	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 //	String uid = "scott";
 //	String upw = "tiger";
+	
+	JdbcTemplate template = null;	
 	
 	public static final int MEMBER_NONEXISTENET = 0;
 	public static final int MEMBER_EXISTENT = 1;
@@ -30,7 +35,7 @@ public class MemberDAO {
 	public static MemberDAO instance = new MemberDAO();
 	
 	private MemberDAO() {
-		
+		template = Constant.template;
 	}
 	public static MemberDAO getInstance() {
 		return instance;

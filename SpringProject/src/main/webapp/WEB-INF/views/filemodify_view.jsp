@@ -13,8 +13,8 @@
     <!-- Bootstrap CSS -->
    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="resources/css/normalize.css" rel="stylesheet">
+    <link href="resources/css/style.css" rel="stylesheet">
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
         <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -22,7 +22,7 @@
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-    <link href="css/filemodify_view.css" rel="stylesheet">
+    <link href="resources/css/filemodify_view.css" rel="stylesheet">
     <title>K.SW Project</title>
 </head>
 <body>
@@ -112,7 +112,7 @@ String fileName1 = request.getParameter("fileName1");
 			</th>
 		</tr>
 		</thead>
-		<form name="modify_form" action="filemodify.do?kind=modify&bNum=<%=bNum %>" method="post" enctype="Multipart/form-data">
+		<form name="modify_form" action="filemodify?kind=modify&bNum=<%=bNum %>" method="post" enctype="Multipart/form-data">
 			<tr style="display:none;">
 				<td>게시판</td>
 				<td><input type="text" name="bNum" value="<%= bNum %>" size="50"></td>
@@ -185,10 +185,10 @@ String fileName1 = request.getParameter("fileName1");
         <footer>
           <div class="ft-sns-wrap">
               <ul class="clear">
-                <li><a href="#"><img src="image/facebook-on.png" alt="페이스북"></a></li>
-                <li><a href="#"><img src="image/instagram-on.png" alt="인스타그램"></a></li>
-                <li><a href="#"><img src="image/twiter-on.png" alt="트위터"></a></li>
-                <li><a href="#"><img src="image/youtube-on.png" alt="유튜브"></a></li>
+                <li><a href="#"><img src="resources/image/facebook-on.png" alt="페이스북"></a></li>
+                <li><a href="#"><img src="resources/image/instagram-on.png" alt="인스타그램"></a></li>
+                <li><a href="#"><img src="resources/image/twiter-on.png" alt="트위터"></a></li>
+                <li><a href="#"><img src="resources/image/youtube-on.png" alt="유튜브"></a></li>
               </ul>
             </div>
             <div class="copy-wrap">
@@ -201,7 +201,7 @@ String fileName1 = request.getParameter("fileName1");
         <!-- footer end -->
     <!-- home end -->
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/script.js"></script> 
-    <script src="js/filemodify_view.js"></script> 
+    <script src="resources/js/script.js"></script> 
+    <script src="resources/js/filemodify_view.js"></script> 
 </body>
 </html>
