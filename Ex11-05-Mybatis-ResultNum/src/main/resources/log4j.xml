@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Application Loggers -->
+	<logger name="com.study.spring31" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="console"/>
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="off" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>
+
+<!-- 
+
+%m: 로그 내용 출력
+%p: debug, info, warn, error, fatal 등의 priority 출력
+%r: 어플이 시작 후 이벤트가 발생하는 시점까지의 경과시간 밀리세컨드로 출력
+%c: package 출력
+%c{n}: n(숫자) 만큼의 package를 가장 하단 부터 역으로 출력
+예) %c{2} 일때 a.b.c 는 b.c 로 출력된다.
+%n: 개행문자 출력. 플렛폼에 따라 \r\n 또는 \n 출력.
+%d: 이벤트 발생 날짜 출력 ( 프로그램의 실행속도를 느리게 한다.)
+예) %d{HH:mm:ss} 또는 %d{dd MMMM yyyy HH:mm:ss}
+%C: 호출자의 클래스명 출력
+예) %C{2} 일때 a.b.c.TestClass 는 c.TestClass 로 출력된다.
+%M: method 이름.
+%F: 프로그램 파일명.
+%l: caller의 정보
+%L: caller의 라인수
+%x: thread와 관련된 NDC(nested diagnostic context)
+%X: thread와 관련된 MDC(mapped diagnostic context)
+%%: % 표시를 출력
+%t: 쓰레드 이름
+
+ -->
