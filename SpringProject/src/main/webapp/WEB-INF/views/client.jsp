@@ -3,7 +3,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="com.study.spring20.dto.BDto"%>
-<%@page import="com.study.spring20.dao.BDao"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>

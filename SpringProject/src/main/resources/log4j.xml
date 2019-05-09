@@ -10,9 +10,9 @@
 		</layout>
 	</appender>
 	
-	<!-- Application Loggers -->
-	<logger name="com.study.spring20">
-		<level value="info" />
+	<logger name="com.study.spring20" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="console"/>
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -34,7 +34,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="off" />
 		<appender-ref ref="console" />
 	</root>
 	

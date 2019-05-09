@@ -5,7 +5,56 @@
 	
 <mapper namespace="com.study.spring20.dao.IDao">
 	<select id="list" resultType="com.study.spring20.dto.BDto">
-		SELECT * FROM MVC_BOARD1 WHERE BNUM = #{param2} ORDER BY BID DESC
+		SELECT * FROM (SELECT ROWNUM NUM, A.* FROM (SELECT * FROM MVC_BOARD1 WHERE BNUM= #{param3} ORDER BY BGROUP DESC, BSTEP ASC ) A WHERE <![CDATA[ ROWNUM <= #{param2} ]]> ) B WHERE B.NUM >= #{param1}
 	</select>
 	
+	<select id="articleCount" resultType="_int">
+		SELECT COUNT(*) FROM MVC_BOARD1 where bNum = #{param1}
+	</select>
+	
+	<select id="selectlist" resultType="com.study.spring20.dto.BDto">
+		SELECT * FROM (SELECT ROWNUM NUM, A.* FROM (SELECT * FROM MVC_BOARD1 WHERE BNUM= #{param4} AND ${param6} LIKE '%${param3}%' ORDER BY BGROUP DESC, BSTEP ASC ) A WHERE <![CDATA[ ROWNUM <= #{param2} ]]>) B WHERE B.NUM >= #{param1}
+	</select>
+	
+	<insert id="write">
+		INSERT INTO MVC_BOARD1 (BNUM, BID, BNAME, BTITLE, BFILE, BCONTENT, BHIT, BGROUP, BSTEP, BINDENT, ID) 
+		VALUES (#{param1}, ${param7}, #{param2}, #{param3}, #{param4},#{param5}, 0, ${param8}, 0, 0, #{param6})
+	</insert>
+
+	<delete id="delete">
+		DELETE FROM MVC_BOARD1 WHERE BID = #{param1} AND BNUM = #{param2}
+	</delete>
+	
+	<select id="contentView" resultType="com.study.spring20.dto.BDto">
+		SELECT * FROM MVC_BOARD1 WHERE BID = #{param1} AND BNUM = #{param3}
+	</select>
+	
+	<update id="upHit">
+		UPDATE MVC_BOARD1 SET bHIT = BHIT + 1 WHERE BID = #{param1}
+	</update>
+	
+	<update id="modify">
+		UPDATE MVC_BOARD1 SET BNAME = #{param3}, BTITLE = #{param4}, BCONTENT = #{param5} ,BFILE = #{param6}  where BID = #{param2} and BNUM = #{param1}
+	</update>
+	
+	<select id="reply_view" resultType="com.study.spring20.dto.BDto">
+		select * from mvc_board1 where bId = #{param1} and bNum = #{param2}
+	</select>
+	
+	<insert id="reply">
+		INSERT INTO MVC_BOARD1 (BNUM, BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, ID) 
+		VALUES (#{param1}, ${param10}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9})
+	</insert>
+	
+	<select id="Memberlist" resultType="com.study.spring20.MemberDTO">
+		SELECT * FROM (SELECT ROWNUM NUM, A.* FROM (SELECT * FROM MEMBERS WHERE ID NOT IN('admin') ORDER BY RDATE DESC) A WHERE <![CDATA[ ROWNUM <= #{param2} ]]> ) B WHERE B.NUM >= #{param1}
+	</select>
+	
+	<select id="memberarticleCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBERS
+	</select>
+
+	<update id="replyShape">
+		update mvc_board1 set bStep = bStep + 1 where bGroup = #{param1} and bStep > #{param2}
+	</update>
 </mapper>
