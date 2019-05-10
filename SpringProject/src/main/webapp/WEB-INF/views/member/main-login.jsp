@@ -35,7 +35,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="resources/css/normalize.css" rel="stylesheet">
+    <link href="../resources/css/normalize.css" rel="stylesheet">
    	<script src="https://apis.google.com/js/api:client.js"></script>
     <link href="../resources/css/style.css" rel="stylesheet">
     <link href="../resources/css/main-login.css" rel="stylesheet">
@@ -47,13 +47,16 @@
         <header>
          <div id="lsbtn">
          	 <form id="form" action="logout" method="post">
-         	 <%if(name.equals("관리자")) { %>
-         	 	<input id="dblogout" class="btn btn-outline-danger" type="submit" value="로그아웃">
-         	 	<button class="btn btn-outline-danger" type="button" onclick="javascript:window.location='member'">멤버 관리</button>
-         	 <%} else { %>
-         	 	<input id="dblogout" class="btn btn-outline-danger" type="submit" value="로그아웃">
+			<div id="admin">
+				<c:url value="/j_spring_security_logout" var="logoutUrl"/>
+         	 	<input id="dblogout" class="btn btn-outline-danger" type="button" value="로그아웃" onclick="javascript:window.location='${logoutUrl }'">
+         		<button class="btn btn-outline-danger" type="button" onclick="javascript:window.location='member'">멤버 관리</button>
+			</div>
+			<div id="member">
+				<c:url value="/j_spring_security_logout" var="logoutUrl"/>
+         	 	<input id="dblogout" class="btn btn-outline-danger" type="button" value="로그아웃" onclick="javascript:window.location='${logoutUrl }'">
          	 	<button onclick="javascript:window.location='membermodify'" type="button" class="btn btn-outline-danger">정보수정</button>
-         	 <%} %>
+			</div>
 			</form>
          </div>
           <div class="nav-wrap">
@@ -98,19 +101,6 @@
             <div id="content">
 				<div id="texts">
 				</div>
-				<h1>
-	welcome : Member  
-</h1>
-  
-  <s:authorize ifAnyGranted="ROLE_USER, ROLE_ADMIN">
-  	<p>LogIn</p>
-  </s:authorize>
-  <s:authorize ifNotGranted="ROLE_USER, ROLE_ADMIN">
-  	<p>LogOut</p>
-  </s:authorize>
-USER ID : <s:authentication property="name"/><br/>
-<c:url value="/j_spring_security_logout" var="logoutUrl"/>
-<a href="${logoutUrl }">LogOut</a>
 			</div>
         </div>
         
@@ -118,10 +108,10 @@ USER ID : <s:authentication property="name"/><br/>
         <footer>
           <div class="ft-sns-wrap">
               <ul class="clear">
-                <li><a href="#"><img src="resources/image/facebook-on.png" alt="페이스북"></a></li>
-                <li><a href="#"><img src="resources/image/instagram-on.png" alt="인스타그램"></a></li>
-                <li><a href="#"><img src="resources/image/twiter-on.png" alt="트위터"></a></li>
-                <li><a href="#"><img src="resources/image/youtube-on.png" alt="유튜브"></a></li>
+                <li><a href="#"><img src="../resources/image/facebook-on.png" alt="페이스북"></a></li>
+                <li><a href="#"><img src="../resources/image/instagram-on.png" alt="인스타그램"></a></li>
+                <li><a href="#"><img src="../resources/image/twiter-on.png" alt="트위터"></a></li>
+                <li><a href="#"><img src="../resources/image/youtube-on.png" alt="유튜브"></a></li>
               </ul>
             </div>
             <div class="copy-wrap">
@@ -138,11 +128,15 @@ USER ID : <s:authentication property="name"/><br/>
     <script src="../resources/js/script.js"></script>  
     <script src="../resources/js/main-login.js"></script>  
 	<script>
-	var admin = "<%=name%>";
+	var admin = "<s:authentication property="name"/>";
 	if(admin == "관리자") {
 		alert("관리자로 로그인하셨습니다.");
+		$("#member").css("display", "none");
+		$("#admin").css("display", "block");
 	} else {
 		alert(admin + "님 환영합니다.");
+		$("#member").css("display", "block");
+		$("#admin").css("display", "none");
 	}
 	</script>
 </body>
